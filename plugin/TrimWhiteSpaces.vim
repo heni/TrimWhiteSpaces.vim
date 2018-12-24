@@ -10,7 +10,7 @@ augroup trimWhiteSpaces
     autocmd!
     autocmd BufReadPre * let b:trimWhiteSpaceAllowed = 0 
     autocmd FileType c,cpp,java,php,ruby,python,sh,scala let b:trimWhiteSpaceAllowed = 1
-    autocmd BufWritePre * if b:trimWhiteSpaceAllowed | call TrimWhiteSpaces() | endif
+    autocmd BufWritePre * if exists("b:trimWhiteSpaceAllowed") && b:trimWhiteSpaceAllowed | call TrimWhiteSpaces() | endif
     "workaround: by some reason last BufWritePre command isn't executed
     autocmd BufWritePre * |
 augroup END
